@@ -1,4 +1,4 @@
-package io.papermc.testplugin;
+package io.papermc.funnygame;
 
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
