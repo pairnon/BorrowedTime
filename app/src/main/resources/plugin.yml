@@ -1,6 +1,6 @@
 name: ExamplePlugin
 version: 1.0.0
-main: io.papermc.funnygame.ExamplePlugin
+main: io.papermc.funnygame.FunnyPlugin
 description: An example plugin
 author: PaperMC
 website: https://papermc.io

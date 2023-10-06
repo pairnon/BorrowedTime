@@ -35,7 +35,7 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass.set("io.papermc.funnygame.ExamplePlugin")
+    mainClass.set("io.papermc.funnygame.FunnyPlugin")
 }
 
 tasks.named<Test>("test") {
