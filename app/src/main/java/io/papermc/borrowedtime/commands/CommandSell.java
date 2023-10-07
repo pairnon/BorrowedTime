@@ -37,7 +37,7 @@ public class CommandSell implements CommandExecutor {
             btPlayer.addSecondsRemaining(total);
             FileRW.writeFile("btplayers.ser", btPlayers);
 
-            player.sendMessage(Component.text("You gained " + total + " seconds!"));
+            player.sendMessage(Component.text("You gained " + total + handlePlural(" second", total) + "!"));
 
         }
         
@@ -57,6 +57,15 @@ public class CommandSell implements CommandExecutor {
 
         return finalValue;
 
+    }
+
+    public String handlePlural(String noun, int amount) {
+        if(amount == 1) {
+            return noun;
+        }
+        else {
+            return noun + "s";
+        }
     }
 
 }
