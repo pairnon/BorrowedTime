@@ -8,6 +8,7 @@ import org.bukkit.event.player.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.*;
+import java.time.Duration;
 
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.boss.*;
@@ -86,7 +87,7 @@ public class BorrowedTime extends JavaPlugin implements Listener {
 
                 if(checkPlayer(player)) {
                     btPlayer.decSecondsRemaining();
-                    timeRem.setTitle("Seconds Remaining: " + btPlayer.getSecondsRemaining());
+                    timeRem.setTitle("Time Remaining: " + formatSeconds(btPlayer.getSecondsRemaining()));
                     checkPlayerTimeLeft(player, btPlayer);
 
                     // update ArrayList and file
@@ -114,6 +115,15 @@ public class BorrowedTime extends JavaPlugin implements Listener {
         } else {
             return false;
         }
+    }
+
+    public String formatSeconds(int totalSeconds) {
+        Duration duration = Duration.ofSeconds(totalSeconds);
+        long days = duration.toDaysPart();
+        long hours = duration.toHoursPart();
+        long minutes = duration.toMinutesPart();
+        long seconds = duration.toSecondsPart();
+        return String.format("%d days, %d hours, %d minutes, %d seconds", days, hours, minutes, seconds);
     }
 
 }
