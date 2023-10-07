@@ -9,7 +9,9 @@ public class Values {
 
     public static int getUnitValue(Material item) {
         File configPath = new File("plugins/btvalues.yaml");
-        YamlConfiguration config = new YamlConfiguration(configPath);
+        YamlConfiguration config = YamlConfiguration.loadConfiguration(configPath);
+
+        return 0;
     }
 
 }
