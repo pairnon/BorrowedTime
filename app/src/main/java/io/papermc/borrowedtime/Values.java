@@ -7,7 +7,7 @@ import org.bukkit.Material;
 
 public class Values {
 
-    public static getUnitValue(Material item) {
+    public static int getUnitValue(Material item) {
         File configPath = new File("plugins/btvalues.yaml");
         YamlConfiguration config = new YamlConfiguration(configPath);
     }
