@@ -1,4 +1,4 @@
-# funny-game
-Funny Game Java Plugin
+# BorrowedTime
+BorrowedTime Java Plugin
 
-*This plugin is currently in a testing state!*
+*A plugin where time is of the essence...*
