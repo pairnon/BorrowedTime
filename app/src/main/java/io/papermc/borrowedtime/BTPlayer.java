@@ -15,6 +15,10 @@ public class BTPlayer implements Serializable {
 
     }
 
+    public void addSecondsRemaining(int seconds) {
+        secondsRemaining += seconds;
+    }
+
     public void setSecondsRemaining(int seconds) {
         secondsRemaining = seconds;
     }
