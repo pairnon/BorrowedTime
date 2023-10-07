@@ -37,7 +37,7 @@ public class CommandSell implements CommandExecutor {
             btPlayer.addSecondsRemaining(total);
             FileRW.writeFile("btplayers.ser", btPlayers);
 
-            player.sendMessage(Component.text("You gained " + total + handlePlural(" second", total) + "!"));
+            player.sendTitle(ChatColor.GREEN + "You gained " + total + handlePlural(" second", total) + "!", "", 5, 20, 5);
 
         }
         
