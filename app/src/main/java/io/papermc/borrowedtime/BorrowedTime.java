@@ -30,6 +30,7 @@ public class BorrowedTime extends JavaPlugin implements Listener {
         }
 
         else {
+            System.out.println("btplayers.ser not found! Initializing new BTPlayer databse.");
             FileRW.writeFile("btplayers.ser", btPlayers);
             btPlayers = FileRW.readFile("btplayers.ser");
         }

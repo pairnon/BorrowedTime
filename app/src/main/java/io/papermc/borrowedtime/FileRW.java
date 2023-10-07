@@ -27,7 +27,6 @@ public class FileRW {
             fileIn.close();
             return arrList;
         } catch (IOException i) {
-            i.printStackTrace();
             return null;
         } catch (ClassNotFoundException c) {
             System.out.println("BTPlayer class not found");
