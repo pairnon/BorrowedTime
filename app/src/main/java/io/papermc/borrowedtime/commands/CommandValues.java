@@ -88,7 +88,56 @@ public class CommandValues implements CommandExecutor {
         player.openInventory(inv);
     }
 
+    public static void openOres(Player player) {
+        Inventory inv = Bukkit.createInventory(null, 27, "Ores");
+        ItemStack itemStack;
+        ItemMeta meta;
+        List<String> lore;
+        Material mat;
+
+        mat = Material.IRON_INGOT;
+        itemStack = new ItemStack(mat);
+        meta = itemStack.getItemMeta();
+        lore = new ArrayList<>();
+        int value = calcValue(mat, 1);
+        lore.add("Value: " + ChatColor.GREEN + value + handlePlural(" second", value));
+        meta.setLore(lore);
+        itemStack.setItemMeta(meta);
+        inv.setItem(0, itemStack);
+
+        player.openInventory(inv);
+
+    }
+
+    public static void openFarming(Player player) {
+        Inventory inv = Bukkit.createInventory(null, 27, "Farming / Food");
+        
+        //
+
+        player.openInventory(inv);
+
+    }
+
+    public static void openBlocks(Player player) {
+        Inventory inv = Bukkit.createInventory(null, 27, "Blocks");
+        
+        //
+
+        player.openInventory(inv);
+
+    }
+
+    public static void openValuables(Player player) {
+        Inventory inv = Bukkit.createInventory(null, 27, "Valuables");
+        
+        //
+
+        player.openInventory(inv);
+
+    }
+
     public static void handleClickEvent(InventoryClickEvent event) {
+        Player player = (Player) event.getWhoClicked();
         InventoryView view = event.getView();
         String title = view.getTitle();
         if (title.equals("Item Values")) {
@@ -96,8 +145,21 @@ public class CommandValues implements CommandExecutor {
             ItemStack item = event.getCurrentItem();
             if (item != null) {
                 Material mat = item.getType();
-                Player player = (Player) event.getWhoClicked();
-                player.sendMessage(ChatColor.GREEN + "Value: " + calcValue(mat, 1) + " seconds");
+
+                if(mat.equals(Material.DIAMOND)) {
+                    openOres(player);
+                }
+                else if(mat.equals(Material.WHEAT)) {
+                    openFarming(player);
+                }
+                else if(mat.equals(Material.STONE)) {
+                    openBlocks(player);
+                }
+                else if(mat.equals(Material.ENCHANTED_GOLDEN_APPLE)) {
+                    openValuables(player);
+                }
+
+                // player.sendMessage(ChatColor.GREEN + "Value: " + calcValue(mat, 1) + " seconds");
             }
         }
     }
