@@ -15,6 +15,8 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.boss.*;
 import org.bukkit.entity.*;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
+import org.bukkit.Sound;
 
 import io.papermc.borrowedtime.commands.*;
 
@@ -96,6 +98,7 @@ public class BorrowedTime extends JavaPlugin implements Listener {
                     btPlayer.decSecondsRemaining();
                     int secondsRemaining = btPlayer.getSecondsRemaining();
                     timeRem.setTitle(calcColor(secondsRemaining) + "Time Remaining: " + formatSeconds(secondsRemaining));
+                    warnPlayerBySeconds(player, secondsRemaining);
                     checkPlayerTimeLeft(player, btPlayer);
 
                     // update ArrayList and file
@@ -157,6 +160,28 @@ public class BorrowedTime extends JavaPlugin implements Listener {
         else {
             return ChatColor.GREEN;
         }
+    }
+
+    public void warnPlayerBySeconds(Player player, int seconds) {
+        Location loc = player.getLocation();
+        Sound sound = null;
+        float volume = 1.0F;
+        float pitch = 1.0F;
+        if ( seconds < 10 ) {
+            sound = Sound.valueOf("ENTITY_WITHER_DEATH");
+        }
+        else if ( seconds < 30 ) {
+            sound = Sound.valueOf("BLOCK_NOTE_BLOCK_CHIME");
+            pitch = 0.5F;
+        }
+        else if ( seconds < 60 ) { 
+            sound = Sound.valueOf("BLOCK_NOTE_BLOCK_BELL");
+            pitch = 0.5F;
+        }
+        else {
+            return;
+        }
+        player.playSound(loc, sound, volume, pitch);
     }
 
 }
