@@ -12,3 +12,6 @@ commands:
   sell:
     description: Sell what is in your hand
     usage: /sell
+  get:
+    description: Get literally anything
+    usage: /get <item> <amount>
