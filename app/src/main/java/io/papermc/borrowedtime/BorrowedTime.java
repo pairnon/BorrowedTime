@@ -129,8 +129,13 @@ public class BorrowedTime extends JavaPlugin implements Listener {
     }
 
     public ChatColor calcColor(int seconds) {
-        if( seconds < 300 ) {
-            return ChatColor.YELLOW;
+        if( seconds < 30 ) {
+            if ( seconds % 2 == 0) {
+                return ChatColor.DARK_RED;
+            }
+            else {
+                return ChatColor.RED;
+            }
         }
         else if( seconds < 60 ) {
             if ( seconds % 2 == 0) {
@@ -140,13 +145,8 @@ public class BorrowedTime extends JavaPlugin implements Listener {
                 return ChatColor.GOLD;
             }
         }
-        else if( seconds < 30 ) {
-            if ( seconds % 2 == 0) {
-                return ChatColor.DARK_RED;
-            }
-            else {
-                return ChatColor.RED;
-            }
+        else if( seconds < 300 ) {
+            return ChatColor.YELLOW;
         }
         else {
             return ChatColor.GREEN;
