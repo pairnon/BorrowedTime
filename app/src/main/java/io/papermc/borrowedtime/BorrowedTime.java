@@ -92,14 +92,16 @@ public class BorrowedTime extends JavaPlugin implements Listener {
                 BTPlayer btPlayer = BTPlayer.getBTPlayerByUUID(player.getUniqueId(), btPlayers);
                 int index = btPlayers.indexOf(btPlayer);
 
-                checkPlayerTimeLeft(player, btPlayer);
+                PlayerHasTimeLeft(player, btPlayer);
 
                 if(checkPlayer(player)) {
                     btPlayer.decSecondsRemaining();
                     int secondsRemaining = btPlayer.getSecondsRemaining();
                     timeRem.setTitle(calcColor(secondsRemaining) + "Time Remaining: " + formatSeconds(secondsRemaining));
                     warnPlayerBySeconds(player, secondsRemaining);
-                    checkPlayerTimeLeft(player, btPlayer);
+                    if (!PlayerHasTimeLeft(player, btPlayer)) {
+                        timeRem.removeAll();
+                    }
 
                     // update ArrayList and file
                     btPlayers.set(index, btPlayer);
@@ -113,11 +115,13 @@ public class BorrowedTime extends JavaPlugin implements Listener {
         }.runTaskTimer(this, 0L, 20L);
     }
 
-    public void checkPlayerTimeLeft(Player player, BTPlayer btPlayer) {
+    public boolean PlayerHasTimeLeft(Player player, BTPlayer btPlayer) {
         if(btPlayer.getSecondsRemaining() <= 0) {
             player.setHealth(0.0);
             btPlayer.setSecondsRemaining(startingSeconds);
+            return false;
         }
+        return true;
     }
 
     public boolean checkPlayer(Player player) {
