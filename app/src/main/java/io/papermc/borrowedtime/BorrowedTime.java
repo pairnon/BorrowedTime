@@ -167,16 +167,26 @@ public class BorrowedTime extends JavaPlugin implements Listener {
         Sound sound = null;
         float volume = 1.0F;
         float pitch = 1.0F;
+
+        String title = "Warning!!!";
+        String subtitle = "You are low on seconds!";
+        int fadeIn = 5;
+        int stay = 10;
+        int fadeOut = 5;
+
         if ( seconds < 10 ) {
             sound = Sound.valueOf("ENTITY_WITHER_DEATH");
+            player.sendTitle(calcColor(seconds) + title, calcColor(seconds-1) + subtitle, fadeIn, stay, fadeOut);
         }
         else if ( seconds < 30 ) {
             sound = Sound.valueOf("BLOCK_NOTE_BLOCK_CHIME");
             pitch = 0.5F;
+            player.sendTitle(calcColor(seconds) + title, calcColor(seconds-1) + subtitle, fadeIn, stay, fadeOut);
         }
         else if ( seconds < 60 ) { 
             sound = Sound.valueOf("BLOCK_NOTE_BLOCK_BELL");
             pitch = 0.5F;
+            player.sendTitle(calcColor(seconds) + title, calcColor(seconds-1) + subtitle, fadeIn, stay, fadeOut);
         }
         else {
             return;
