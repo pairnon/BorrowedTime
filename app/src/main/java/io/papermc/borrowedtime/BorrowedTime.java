@@ -20,6 +20,8 @@ import io.papermc.borrowedtime.commands.*;
 
 public class BorrowedTime extends JavaPlugin implements Listener {
 
+    private final int startingSeconds = 75;
+
     private ArrayList<BTPlayer> btPlayers = new ArrayList<BTPlayer>();
 
     @Override
@@ -51,7 +53,7 @@ public class BorrowedTime extends JavaPlugin implements Listener {
         Player player = event.getPlayer();
 
         if ( !BTPlayer.checkPlayerInBTPlayers(player, btPlayers) ) {
-            BTPlayer newBTPlayer = new BTPlayer(player.getUniqueId(), 25);
+            BTPlayer newBTPlayer = new BTPlayer(player.getUniqueId(), startingSeconds);
             btPlayers.add(newBTPlayer);
             FileRW.writeFile("btplayers.ser", btPlayers);
 
@@ -111,7 +113,7 @@ public class BorrowedTime extends JavaPlugin implements Listener {
     public void checkPlayerTimeLeft(Player player, BTPlayer btPlayer) {
         if(btPlayer.getSecondsRemaining() <= 0) {
             player.setHealth(0.0);
-            btPlayer.setSecondsRemaining(25);
+            btPlayer.setSecondsRemaining(startingSeconds);
         }
     }
 
