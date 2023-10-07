@@ -44,7 +44,8 @@ public class BorrowedTime extends JavaPlugin implements Listener {
         
 
         this.getCommand("freedirt").setExecutor(new CommandFreedirt());
-        this.getCommand("sell").setExecutor(new CommandSell());
+        this.getCommand("sellhand").setExecutor(new CommandSellHand());
+        this.getCommand("sellall").setExecutor(new CommandSellAll());
         this.getCommand("get").setExecutor(new CommandGet());
 
     }

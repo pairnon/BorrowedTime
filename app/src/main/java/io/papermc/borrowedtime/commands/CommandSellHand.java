@@ -11,7 +11,7 @@ import org.bukkit.command.*;
 import org.bukkit.inventory.*;
 import org.bukkit.entity.*;
 
-public class CommandSell implements CommandExecutor {
+public class CommandSellHand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -24,7 +24,7 @@ public class CommandSell implements CommandExecutor {
             Material itemType = itemInHand.getType();
             int itemAmount = itemInHand.getAmount();
 
-            int total = calcValue(itemType, itemAmount);
+            int total = CommandValues.calcValue(itemType, itemAmount);
 
             if(total != 0) {
                 player.getInventory().setItemInMainHand(null);
@@ -37,39 +37,11 @@ public class CommandSell implements CommandExecutor {
             btPlayer.addSecondsRemaining(total);
             FileRW.writeFile("btplayers.ser", btPlayers);
 
-            player.sendTitle(ChatColor.GREEN + "You gained " + total + handlePlural(" second", total) + "!", "", 5, 20, 5);
+            player.sendTitle(ChatColor.GREEN + "You gained " + total + CommandValues.handlePlural(" second", total) + "!", "", 5, 20, 5);
 
         }
         
         return true;
-    }
-
-    public int calcValue(Material material, int itemAmount) {
-
-        int unitValue = 0;
-        int finalValue = 0;
-
-        if(material.equals(Material.DIRT)) {
-            unitValue = 1;
-        }
-
-        else if(material.equals(Material.DIAMOND)) {
-            unitValue = 500;
-        }
-
-        finalValue = unitValue * itemAmount;
-
-        return finalValue;
-
-    }
-
-    public String handlePlural(String noun, int amount) {
-        if(amount == 1) {
-            return noun;
-        }
-        else {
-            return noun + "s";
-        }
     }
 
 }

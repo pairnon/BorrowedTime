@@ -9,9 +9,12 @@ commands:
   freedirt:
     description: Free dirt?
     usage: /freedirt
-  sell:
-    description: Sell what is in your hand
-    usage: /sell
+  sellhand:
+    description: Sell the item in your hand
+    usage: /sellhand
+  sellall:
+    description: Sell every item in your inventory that matches your hand
+    usage: /sellall
   get:
     description: Get literally anything
     usage: /get <item> <amount>
