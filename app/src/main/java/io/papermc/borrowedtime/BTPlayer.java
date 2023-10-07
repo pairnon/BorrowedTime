@@ -1,14 +1,14 @@
-package io.papermc.funnygame;
+package io.papermc.borrowedtime;
 
 import java.util.*;
 import java.io.*;
 
-public class FunnyPlayer implements Serializable {
+public class BTPlayer implements Serializable {
 
     private UUID uuid;
     private int secondsRemaining;
 
-    public FunnyPlayer(UUID uuid, int secondsRemaining) {
+    public BTPlayer(UUID uuid, int secondsRemaining) {
 
         this.uuid = uuid;
         this.secondsRemaining = secondsRemaining;

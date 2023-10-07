@@ -1,7 +1,7 @@
-name: ExamplePlugin
+name: BorrowedTime
 version: 1.0.0
-main: io.papermc.funnygame.FunnyPlugin
-description: An example plugin
-author: PaperMC
+main: io.papermc.borrowedtime.BorrowedTime
+description: A plugin where time is of the essence...
+author: pairnon
 website: https://papermc.io
 api-version: '1.20'

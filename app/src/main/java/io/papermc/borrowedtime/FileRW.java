@@ -1,11 +1,11 @@
-package io.papermc.funnygame;
+package io.papermc.borrowedtime;
 
 import java.util.*;
 import java.io.*;
 
 public class FileRW {
 
-    public static void writeFile(String path, ArrayList<FunnyPlayer> arrList) {
+    public static void writeFile(String path, ArrayList<BTPlayer> arrList) {
         try {
             FileOutputStream fileOut = new FileOutputStream(path);
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
@@ -17,12 +17,12 @@ public class FileRW {
         }
     }
 
-    public static ArrayList<FunnyPlayer> readFile(String path) {
-        ArrayList<FunnyPlayer> arrList = null;
+    public static ArrayList<BTPlayer> readFile(String path) {
+        ArrayList<BTPlayer> arrList = null;
         try {
             FileInputStream fileIn = new FileInputStream(path);
             ObjectInputStream in = new ObjectInputStream(fileIn);
-            arrList = (ArrayList<FunnyPlayer>) in.readObject();
+            arrList = (ArrayList<BTPlayer>) in.readObject();
             in.close();
             fileIn.close();
             return arrList;
@@ -30,7 +30,7 @@ public class FileRW {
             i.printStackTrace();
             return null;
         } catch (ClassNotFoundException c) {
-            System.out.println("FunnyPlayer class not found");
+            System.out.println("BTPlayer class not found");
             c.printStackTrace();
             return null;
         }

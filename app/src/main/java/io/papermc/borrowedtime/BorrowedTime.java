@@ -1,4 +1,4 @@
-package io.papermc.funnygame;
+package io.papermc.borrowedtime;
 
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
@@ -13,7 +13,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.boss.*;
 import org.bukkit.entity.*;
 
-public class FunnyPlugin extends JavaPlugin implements Listener {
+public class BorrowedTime extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
@@ -27,7 +27,7 @@ public class FunnyPlugin extends JavaPlugin implements Listener {
 
         player.sendMessage(Component.text("Hello, " + event.getPlayer().getName() + "!"));
 
-        FunnyPlayer funnyPlayer = new FunnyPlayer(player.getUniqueId(), 25);
+        BTPlayer btPlayer = new BTPlayer(player.getUniqueId(), 25);
         
         BossBar timeRem = Bukkit.createBossBar("x", BarColor.PURPLE, BarStyle.SOLID);
         timeRem.addPlayer(player);
@@ -35,11 +35,11 @@ public class FunnyPlugin extends JavaPlugin implements Listener {
         new BukkitRunnable() {
             @Override
             public void run() {
-                funnyPlayer.decSecondsRemaining();
-                timeRem.setTitle("Seconds Remaining: " + funnyPlayer.getSecondsRemaining());
-                if(funnyPlayer.getSecondsRemaining() <= 0) {
+                btPlayer.decSecondsRemaining();
+                timeRem.setTitle("Seconds Remaining: " + btPlayer.getSecondsRemaining());
+                if(btPlayer.getSecondsRemaining() <= 0) {
                     player.damage(1000000);
-                    funnyPlayer.setSecondsRemaining(25);
+                    btPlayer.setSecondsRemaining(25);
                 }
             }
         }.runTaskTimer(this, 0L, 20L);
