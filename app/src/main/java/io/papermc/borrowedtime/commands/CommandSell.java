@@ -33,7 +33,7 @@ public class CommandSell implements CommandExecutor {
 
             ArrayList<BTPlayer> btPlayers = FileRW.readFile("btplayers.ser");
 
-            BTPlayer btPlayer = getBTPlayerByUUID(player.getUniqueId(), btPlayers);
+            BTPlayer btPlayer = BTPlayer.getBTPlayerByUUID(player.getUniqueId(), btPlayers);
 
             btPlayer.addSecondsRemaining(total);
             FileRW.writeFile("btplayers.ser", btPlayers);
@@ -58,15 +58,6 @@ public class CommandSell implements CommandExecutor {
 
         return finalValue;
 
-    }
-
-    public BTPlayer getBTPlayerByUUID(UUID uuid, ArrayList<BTPlayer> arrlist) {
-        for ( BTPlayer b : arrlist ) {
-            if( b.getUUID().equals(uuid) ) {
-                return b;
-            }
-        }
-        return null;
     }
 
 }

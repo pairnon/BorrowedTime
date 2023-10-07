@@ -3,6 +3,8 @@ package io.papermc.borrowedtime;
 import java.util.*;
 import java.io.*;
 
+import org.bukkit.entity.Player;
+
 public class BTPlayer implements Serializable {
 
     private UUID uuid;
@@ -38,6 +40,24 @@ public class BTPlayer implements Serializable {
     public String toString() {
         String out = "UUID: " + uuid + "\nSeconds Remaining: " + secondsRemaining;
         return out;
+    }
+
+    public static boolean checkPlayerInBTPlayers(Player player, ArrayList<BTPlayer> arrlist) {
+        for( BTPlayer b : arrlist ) {
+            if( b.getUUID().equals(player.getUniqueId()) ) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static BTPlayer getBTPlayerByUUID(UUID uuid, ArrayList<BTPlayer> arrlist) {
+        for ( BTPlayer b : arrlist ) {
+            if( b.getUUID().equals(uuid) ) {
+                return b;
+            }
+        }
+        return null;
     }
 
 }

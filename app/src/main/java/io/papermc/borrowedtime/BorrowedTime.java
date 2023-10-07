@@ -43,7 +43,7 @@ public class BorrowedTime extends JavaPlugin implements Listener {
 
         Player player = event.getPlayer();
 
-        if ( !checkPlayerInBTPlayers(player, btPlayers) ) {
+        if ( !BTPlayer.checkPlayerInBTPlayers(player, btPlayers) ) {
             BTPlayer newBTPlayer = new BTPlayer(player.getUniqueId(), 25);
             btPlayers.add(newBTPlayer);
             FileRW.writeFile("btplayers.ser", btPlayers);
@@ -78,7 +78,7 @@ public class BorrowedTime extends JavaPlugin implements Listener {
 
                 ArrayList<BTPlayer> btPlayers = FileRW.readFile("btplayers.ser");
 
-                BTPlayer btPlayer = getBTPlayerByUUID(player.getUniqueId(), btPlayers);
+                BTPlayer btPlayer = BTPlayer.getBTPlayerByUUID(player.getUniqueId(), btPlayers);
                 int index = btPlayers.indexOf(btPlayer);
 
                 checkPlayerTimeLeft(player, btPlayer);
@@ -105,24 +105,6 @@ public class BorrowedTime extends JavaPlugin implements Listener {
             player.setHealth(0.0);
             btPlayer.setSecondsRemaining(25);
         }
-    }
-
-    public boolean checkPlayerInBTPlayers(Player player, ArrayList<BTPlayer> arrlist) {
-        for( BTPlayer b : arrlist ) {
-            if( b.getUUID().equals(player.getUniqueId()) ) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public BTPlayer getBTPlayerByUUID(UUID uuid, ArrayList<BTPlayer> arrlist) {
-        for ( BTPlayer b : arrlist ) {
-            if( b.getUUID().equals(uuid) ) {
-                return b;
-            }
-        }
-        return null;
     }
 
     public boolean checkPlayer(Player player) {
