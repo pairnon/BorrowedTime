@@ -13,6 +13,7 @@ import java.time.Duration;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.boss.*;
 import org.bukkit.entity.*;
+import org.bukkit.ChatColor;
 
 import io.papermc.borrowedtime.commands.*;
 
@@ -87,7 +88,8 @@ public class BorrowedTime extends JavaPlugin implements Listener {
 
                 if(checkPlayer(player)) {
                     btPlayer.decSecondsRemaining();
-                    timeRem.setTitle("Time Remaining: " + formatSeconds(btPlayer.getSecondsRemaining()));
+                    int secondsRemaining = btPlayer.getSecondsRemaining();
+                    timeRem.setTitle(calcColor(secondsRemaining) + "Time Remaining: " + formatSeconds(secondsRemaining));
                     checkPlayerTimeLeft(player, btPlayer);
 
                     // update ArrayList and file
@@ -124,6 +126,31 @@ public class BorrowedTime extends JavaPlugin implements Listener {
         long minutes = duration.toMinutesPart();
         long seconds = duration.toSecondsPart();
         return String.format("%d days, %d hours, %d minutes, %d seconds", days, hours, minutes, seconds);
+    }
+
+    public ChatColor calcColor(int seconds) {
+        if( seconds < 300 ) {
+            return ChatColor.YELLOW;
+        }
+        else if( seconds < 60 ) {
+            if ( seconds % 2 == 0) {
+                return ChatColor.YELLOW;
+            }
+            else {
+                return ChatColor.GOLD;
+            }
+        }
+        else if( seconds < 30 ) {
+            if ( seconds % 2 == 0) {
+                return ChatColor.DARK_RED;
+            }
+            else {
+                return ChatColor.RED;
+            }
+        }
+        else {
+            return ChatColor.GREEN;
+        }
     }
 
 }
