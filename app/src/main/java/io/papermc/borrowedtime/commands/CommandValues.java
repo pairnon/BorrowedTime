@@ -75,7 +75,11 @@ public class CommandValues implements CommandExecutor {
 
         for(int i = 0; i < contents.length; i++) {
             if(contents[i] == null) {
-                contents[i] = new ItemStack(Material.BLACK_STAINED_GLASS_PANE);
+                ItemStack filler = new ItemStack(Material.BLACK_STAINED_GLASS_PANE);
+                meta = filler.getItemMeta();
+                meta.setDisplayName(" ");
+                filler.setItemMeta(meta);
+                contents[i] = filler;
             }
         }
 
