@@ -169,7 +169,7 @@ public class BorrowedTime extends JavaPlugin implements Listener {
         float pitch = 1.0F;
 
         String title = "Warning!!!";
-        String subtitle = "You are low on seconds!";
+        String subtitle = "You are low on time!";
         int fadeIn = 5;
         int stay = 10;
         int fadeOut = 5;
