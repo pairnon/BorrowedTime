@@ -54,6 +54,8 @@ public class BorrowedTime extends JavaPlugin implements Listener {
 
         Player player = event.getPlayer();
 
+        btPlayers = FileRW.readFile("btplayers.ser");
+
         if ( !BTPlayer.checkPlayerInBTPlayers(player, btPlayers) ) {
             BTPlayer newBTPlayer = new BTPlayer(player.getUniqueId(), startingSeconds);
             btPlayers.add(newBTPlayer);
