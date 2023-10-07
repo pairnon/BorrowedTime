@@ -9,6 +9,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.*;
 import java.time.Duration;
+import java.util.logging.*;
 
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.boss.*;
@@ -25,12 +26,14 @@ public class BorrowedTime extends JavaPlugin implements Listener {
     public void onEnable() {
         Bukkit.getPluginManager().registerEvents(this, this);
 
+        Logger logger = Bukkit.getLogger();
+
         if( !(FileRW.readFile("btplayers.ser") == null) ) {
             btPlayers = FileRW.readFile("btplayers.ser");
         }
 
         else {
-            System.out.println("btplayers.ser not found! Initializing new BTPlayer databse.");
+            logger.log(Level.WARNING, "btplayers.ser not found! Initializing new BTPlayer databse.");
             FileRW.writeFile("btplayers.ser", btPlayers);
             btPlayers = FileRW.readFile("btplayers.ser");
         }
