@@ -53,6 +53,10 @@ public class CommandSell implements CommandExecutor {
             unitValue = 1;
         }
 
+        else if(material.equals(Material.DIAMOND)) {
+            unitValue = 500;
+        }
+
         finalValue = unitValue * itemAmount;
 
         return finalValue;
