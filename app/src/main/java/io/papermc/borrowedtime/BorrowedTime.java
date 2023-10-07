@@ -17,6 +17,7 @@ import org.bukkit.entity.*;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Sound;
+import org.bukkit.event.inventory.InventoryClickEvent;
 
 import io.papermc.borrowedtime.commands.*;
 
@@ -46,6 +47,7 @@ public class BorrowedTime extends JavaPlugin implements Listener {
         this.getCommand("freedirt").setExecutor(new CommandFreedirt());
         this.getCommand("sellhand").setExecutor(new CommandSellHand());
         this.getCommand("sellall").setExecutor(new CommandSellAll());
+        this.getCommand("values").setExecutor(new CommandValues());
         this.getCommand("get").setExecutor(new CommandGet());
 
     }
@@ -79,6 +81,11 @@ public class BorrowedTime extends JavaPlugin implements Listener {
         player.sendMessage("You have respawned!");
 
         runTime(player);
+    }
+
+    @EventHandler
+    public void onInventoryClick(InventoryClickEvent event) {
+        CommandValues.handleClickEvent(event);
     }
 
     public void runTime(Player player) {

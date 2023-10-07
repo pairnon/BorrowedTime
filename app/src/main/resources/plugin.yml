@@ -15,6 +15,9 @@ commands:
   sellall:
     description: Sell every item in your inventory that matches your hand
     usage: /sellall
+  values:
+    description: Get item values
+    usage: /values
   get:
     description: Get literally anything
     usage: /get <item> <amount>
