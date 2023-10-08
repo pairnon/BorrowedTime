@@ -44,13 +44,9 @@ public class BorrowedTime extends JavaPlugin implements Listener {
             btPlayers = FileRW.readFile("btplayers.ser");
         }
         
-
-        this.getCommand("freedirt").setExecutor(new CommandFreedirt());
         this.getCommand("sellhand").setExecutor(new CommandSellHand());
         this.getCommand("sellall").setExecutor(new CommandSellAll());
         this.getCommand("values").setExecutor(new CommandValues());
-        this.getCommand("get").setExecutor(new CommandGet());
-
     }
 
     @EventHandler

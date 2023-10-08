@@ -6,9 +6,6 @@ author: pairnon
 website: https://papermc.io
 api-version: '1.20'
 commands:
-  freedirt:
-    description: Free dirt?
-    usage: /freedirt
   sellhand:
     description: Sell the item in your hand
     usage: /sellhand
@@ -16,8 +13,5 @@ commands:
     description: Sell every item in your inventory that matches your hand
     usage: /sellall
   values:
-    description: Get item values
+    description: View item values
     usage: /values
-  get:
-    description: Get literally anything
-    usage: /get <item> <amount>
