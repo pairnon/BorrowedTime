@@ -86,19 +86,12 @@ public class Values {
 
         int unitValue = 0;
         int finalValue = 0;
-
-        if(material.equals(Material.DIRT)) {
-            unitValue = Values.getUnitValue(material);
-        }
-
-        else if(material.equals(Material.DIAMOND)) {
-            unitValue = 500;
-        }
+        
+        unitValue = Values.getUnitValue(material);
 
         finalValue = unitValue * itemAmount;
 
         return finalValue;
-
     }
 
     public static String handlePlural(String noun, int amount) {
