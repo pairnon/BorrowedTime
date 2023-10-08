@@ -71,7 +71,7 @@ public class Values {
                         meta = itemStack.getItemMeta();
                         lore = new ArrayList<>();
                         double value = unitValue * 1;
-                        lore.add("Value: " + ChatColor.GREEN + value + handlePlural(" second", value));
+                        lore.add("Sell: " + ChatColor.GREEN + value + handlePlural(" second", value));
                         meta.setLore(lore);
                         itemStack.setItemMeta(meta);
                         itemStacks.add(itemStack);
