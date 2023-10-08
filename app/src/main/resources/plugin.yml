@@ -7,10 +7,10 @@ website: https://papermc.io
 api-version: '1.20'
 commands:
   sellhand:
-    description: Sell the item in your hand
+    description: Sell the stack in your hand
     usage: /sellhand
   sellall:
-    description: Sell every item in your inventory that matches your hand
+    description: Sell all stacks that match your hand
     usage: /sellall
   values:
     description: View item values
