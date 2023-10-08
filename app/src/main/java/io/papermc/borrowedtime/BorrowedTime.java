@@ -94,21 +94,20 @@ public class BorrowedTime extends JavaPlugin implements Listener {
         Player player = event.getEntity();
         btPlayers = FileRW.readFile("btplayers.ser");
         BTPlayer btPlayer = BTPlayer.getBTPlayerByUUID(player.getUniqueId(), btPlayers);
-        if(btPlayer.getSecondsRemaining() <= 0) {
-            event.setDeathMessage(player.getName() + " ran out of time!");
-            int index = btPlayers.indexOf(btPlayer);
-            btPlayer.setSecondsRemaining(startingSeconds);
-            btPlayers.set(index, btPlayer);
-            FileRW.writeFile("btplayers.ser", btPlayers);
-        }
-        else {
+        if(btPlayer.getSecondsRemaining() > 4) {
             int currentSeconds = btPlayer.getSecondsRemaining();
             int newSeconds = currentSeconds / 2;
             int index = btPlayers.indexOf(btPlayer);
             btPlayer.setSecondsRemaining(newSeconds);
             btPlayers.set(index, btPlayer);
-            FileRW.writeFile("btplayers.ser", btPlayers);
         }
+        else {
+            event.setDeathMessage(player.getName() + " ran out of time!");
+            int index = btPlayers.indexOf(btPlayer);
+            btPlayer.setSecondsRemaining(startingSeconds);
+            btPlayers.set(index, btPlayer);
+        }
+        FileRW.writeFile("btplayers.ser", btPlayers);
     }
 
     public void runTime(Player player) {
