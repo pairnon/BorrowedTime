@@ -26,7 +26,7 @@ public class BorrowedTime extends JavaPlugin implements Listener {
     
     public static final String playersPath = "./plugins/btplayers.ser";
 
-    private final int startingSeconds = 75;
+    private final int startingSeconds = 600;
 
     private ArrayList<BTPlayer> btPlayers = new ArrayList<BTPlayer>();
 
