@@ -1,25 +1,100 @@
 # Example item values file that should be in /plugins
 
 ores:
+  netherite_ingot:
+    sell: 300
   diamond:
-    sell: 40
+    sell: 15
+  gold_ingot:
+    sell: 0.34
   iron_ingot:
-    sell: 20
+    sell: 0.3
+  emerald:
+    sell: 0.02
+  lapis_lazuli:
+    sell: 0.02
+  copper_ingot:
+    sell: 2
+  coal:
+    sell: 1
+  charcoal:
+    sell: 1
+  redstone_block:
+    sell: 0.2
+
+
+
 farming:
   wheat:
-    sell: 5
+    sell: 0.02
+  sugar_cane:
+    sell: 0.02
   cactus:
-    sell: 9
+    sell: 0.5
+  cookie:
+    sell: 1
+
+
+
 mob_drops:
+  rotten_flesh:
+    sell: 0.02
   bone:
-    sell: 9
+    sell: 1
+  gunpowder:
+    sell: 0.3
+  spider_eye:
+    sell: 0.2
   leather:
-    sell: 12
+    sell: 0.5
+
+
+
 blocks:
   dirt:
-    sell: 2
+    sell: 0.8
+  grass_block:
+    sell: 1
+  sand:
+    sell: 1
+  gravel:
+    sell: 1
+  cobblestone:
+    sell: 0.7
+  oak_log:
+    sell: 1
+  spruce_log:
+    sell: 1
+  birch_log:
+    sell: 1
+  jungle_log:
+    sell: 1
+  acacia_log:
+    sell: 1
+  dark_oak_log:
+    sell: 1
+  mangrove_log:
+    sell: 1
+  cherry_log:
+    sell: 1
+  
+
+
+
 valuables:
+  nether_star:
+    sell: 1000
   beacon:
     sell: 1000
   enchanted_golden_apple:
     sell: 300
+  dragon_head:
+    sell: 10000
+  lodestone:
+    sell: 500
+  saddle:
+    sell: 10
+  cobweb:
+    sell: 25
+  trident:
+    sell: 100
