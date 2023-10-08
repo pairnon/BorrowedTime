@@ -2,99 +2,103 @@
 
 ores:
   netherite_ingot:
-    sell: 300
+    sell: 900
   diamond:
-    sell: 15
+    sell: 480
   gold_ingot:
-    sell: 0.34
+    sell: 10
+  raw_gold:
+    sell: 750
   iron_ingot:
-    sell: 0.3
+    sell: 8
+  raw_iron:
+    sell: 400
   emerald:
-    sell: 0.02
+    sell: 20
   lapis_lazuli:
-    sell: 0.02
+    sell: 250
   copper_ingot:
-    sell: 2
+    sell: 235
   coal:
-    sell: 1
+    sell: 300
   charcoal:
-    sell: 1
+    sell: 300
   redstone_block:
-    sell: 0.2
+    sell: 400
 
 
 
 farming:
   wheat:
-    sell: 0.02
+    sell: 120
   sugar_cane:
-    sell: 0.02
+    sell: 100
   cactus:
-    sell: 0.5
+    sell: 85
   cookie:
-    sell: 1
+    sell: 180
 
 
 
 mob_drops:
   rotten_flesh:
-    sell: 0.02
+    sell: 120
   bone:
-    sell: 1
+    sell: 150
   gunpowder:
-    sell: 0.3
+    sell: 210
   spider_eye:
-    sell: 0.2
+    sell: 150
   leather:
-    sell: 0.5
+    sell: 170
 
 
 
 blocks:
   dirt:
-    sell: 0.8
+    sell: 8
   grass_block:
-    sell: 1
+    sell: 10
   sand:
-    sell: 1
+    sell: 10
   gravel:
-    sell: 1
+    sell: 10
   cobblestone:
-    sell: 0.7
+    sell: 8
   oak_log:
-    sell: 1
+    sell: 30
   spruce_log:
-    sell: 1
+    sell: 30
   birch_log:
-    sell: 1
+    sell: 30
   jungle_log:
-    sell: 1
+    sell: 30
   acacia_log:
-    sell: 1
+    sell: 30
   dark_oak_log:
-    sell: 1
+    sell: 30
   mangrove_log:
-    sell: 1
+    sell: 30
   cherry_log:
-    sell: 1
+    sell: 30
   
 
 
 
 valuables:
   nether_star:
-    sell: 1000
+    sell: 1500
   beacon:
-    sell: 1000
+    sell: 1500
   enchanted_golden_apple:
-    sell: 300
+    sell: 800
   dragon_head:
     sell: 10000
   lodestone:
-    sell: 500
+    sell: 1100
   saddle:
-    sell: 10
+    sell: 600
   cobweb:
     sell: 25
   trident:
-    sell: 100
+    sell: 900
