@@ -54,7 +54,7 @@ public class CommandValues implements CommandExecutor {
         itemStack.setItemMeta(meta);
         inv.setItem(12, itemStack);
 
-        itemStack = new ItemStack(Material.STONE);
+        itemStack = new ItemStack(Material.GRASS_BLOCK);
         meta = itemStack.getItemMeta();
         lore = new ArrayList<>();
         lore.add("...");
@@ -147,7 +147,7 @@ public class CommandValues implements CommandExecutor {
                 else if(mat.equals(Material.WHEAT)) {
                     openFarming(player);
                 }
-                else if(mat.equals(Material.STONE)) {
+                else if(mat.equals(Material.GRASS_BLOCK)) {
                     openBlocks(player);
                 }
                 else if(mat.equals(Material.ENCHANTED_GOLDEN_APPLE)) {
