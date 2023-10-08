@@ -14,10 +14,10 @@ import org.bukkit.ChatColor;
 
 public class Values {
 
-    public static int getUnitValue(Material mat) {
+    public static double getUnitValue(Material mat) {
 
         String name = mat.name().toLowerCase();
-        int unitValue = 0;
+        double unitValue = 0.0;
         File configPath = new File("plugins/btvalues.yaml");
         YamlConfiguration config = YamlConfiguration.loadConfiguration(configPath);
         ConfigurationSection root = config.getConfigurationSection("");
@@ -29,7 +29,7 @@ public class Values {
                 for(String item : items) {
                     ConfigurationSection itemSection = categorySection.getConfigurationSection(item);
                     if(itemSection != null && item.equals(name)) {
-                        unitValue = itemSection.getInt("sell");
+                        unitValue = itemSection.getDouble("sell");
                     }
                 }
             }
@@ -65,12 +65,12 @@ public class Values {
                 for(String item : items) {
                     ConfigurationSection itemSection = categorySection.getConfigurationSection(item);
                     if(itemSection != null) {
-                        int unitValue = itemSection.getInt("sell");
+                        double unitValue = itemSection.getDouble("sell");
                         mat = Material.getMaterial(item.toUpperCase());
                         itemStack = new ItemStack(mat);
                         meta = itemStack.getItemMeta();
                         lore = new ArrayList<>();
-                        int value = unitValue * 1;
+                        double value = unitValue * 1;
                         lore.add("Value: " + ChatColor.GREEN + value + handlePlural(" second", value));
                         meta.setLore(lore);
                         itemStack.setItemMeta(meta);
@@ -84,18 +84,18 @@ public class Values {
 
     public static int calcValue(Material material, int itemAmount) {
 
-        int unitValue = 0;
-        int finalValue = 0;
+        double unitValue = 0.0;
+        double finalValue = 0.0;
         
         unitValue = Values.getUnitValue(material);
 
         finalValue = unitValue * itemAmount;
 
-        return finalValue;
+        return (int)finalValue;
     }
 
-    public static String handlePlural(String noun, int amount) {
-        if(amount == 1) {
+    public static String handlePlural(String noun, double amount) {
+        if((int)amount == 1) {
             return noun;
         }
         else {
