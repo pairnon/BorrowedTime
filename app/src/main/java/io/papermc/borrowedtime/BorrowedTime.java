@@ -23,6 +23,8 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import io.papermc.borrowedtime.commands.*;
 
 public class BorrowedTime extends JavaPlugin implements Listener {
+    
+    public static final String playersPath = "./plugins/btplayers.ser";
 
     private final int startingSeconds = 75;
 
@@ -34,14 +36,14 @@ public class BorrowedTime extends JavaPlugin implements Listener {
 
         Logger logger = Bukkit.getLogger();
 
-        if( !(FileRW.readFile("btplayers.ser") == null) ) {
-            btPlayers = FileRW.readFile("btplayers.ser");
+        if( !(FileRW.readFile(playersPath) == null) ) {
+            btPlayers = FileRW.readFile(playersPath);
         }
 
         else {
             logger.log(Level.WARNING, "btplayers.ser not found! Initializing new BTPlayer databse.");
-            FileRW.writeFile("btplayers.ser", btPlayers);
-            btPlayers = FileRW.readFile("btplayers.ser");
+            FileRW.writeFile(playersPath, btPlayers);
+            btPlayers = FileRW.readFile(playersPath);
         }
         
         this.getCommand("sellhand").setExecutor(new CommandSellHand());
@@ -54,12 +56,12 @@ public class BorrowedTime extends JavaPlugin implements Listener {
 
         Player player = event.getPlayer();
 
-        btPlayers = FileRW.readFile("btplayers.ser");
+        btPlayers = FileRW.readFile(playersPath);
 
         if ( !BTPlayer.checkPlayerInBTPlayers(player, btPlayers) ) {
             BTPlayer newBTPlayer = new BTPlayer(player.getUniqueId(), startingSeconds);
             btPlayers.add(newBTPlayer);
-            FileRW.writeFile("btplayers.ser", btPlayers);
+            FileRW.writeFile(playersPath, btPlayers);
 
 
             player.sendMessage(ChatColor.GOLD + "Welcome, " + event.getPlayer().getName() + "!");
@@ -90,7 +92,7 @@ public class BorrowedTime extends JavaPlugin implements Listener {
         Player player = event.getEntity();
         String msg = event.getDeathMessage();
         event.setDeathMessage(ChatColor.GOLD + "" + msg);
-        btPlayers = FileRW.readFile("btplayers.ser");
+        btPlayers = FileRW.readFile(playersPath);
         BTPlayer btPlayer = BTPlayer.getBTPlayerByUUID(player.getUniqueId(), btPlayers);
         if(btPlayer.getSecondsRemaining() > 4) {
             int currentSeconds = btPlayer.getSecondsRemaining();
@@ -105,7 +107,7 @@ public class BorrowedTime extends JavaPlugin implements Listener {
             btPlayer.setSecondsRemaining(startingSeconds);
             btPlayers.set(index, btPlayer);
         }
-        FileRW.writeFile("btplayers.ser", btPlayers);
+        FileRW.writeFile(playersPath, btPlayers);
     }
 
     public void runTime(Player player) {
@@ -117,7 +119,7 @@ public class BorrowedTime extends JavaPlugin implements Listener {
             @Override
             public void run() {
 
-                ArrayList<BTPlayer> btPlayers = FileRW.readFile("btplayers.ser");
+                ArrayList<BTPlayer> btPlayers = FileRW.readFile(playersPath);
 
                 BTPlayer btPlayer = BTPlayer.getBTPlayerByUUID(player.getUniqueId(), btPlayers);
                 int index = btPlayers.indexOf(btPlayer);
@@ -135,7 +137,7 @@ public class BorrowedTime extends JavaPlugin implements Listener {
 
                     // update ArrayList and file
                     btPlayers.set(index, btPlayer);
-                    FileRW.writeFile("btplayers.ser", btPlayers);
+                    FileRW.writeFile(playersPath, btPlayers);
                 }
                 else {
                     timeRem.removeAll();

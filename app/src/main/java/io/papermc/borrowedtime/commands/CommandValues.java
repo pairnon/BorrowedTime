@@ -1,8 +1,6 @@
 package io.papermc.borrowedtime.commands;
 
-import io.papermc.borrowedtime.BTPlayer;
-import io.papermc.borrowedtime.FileRW;
-import io.papermc.borrowedtime.Values;
+import io.papermc.borrowedtime.*;
 
 import java.util.*;
 

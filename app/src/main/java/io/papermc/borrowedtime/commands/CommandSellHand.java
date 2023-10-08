@@ -1,8 +1,6 @@
 package io.papermc.borrowedtime.commands;
 
-import io.papermc.borrowedtime.BTPlayer;
-import io.papermc.borrowedtime.FileRW;
-import io.papermc.borrowedtime.Values;
+import io.papermc.borrowedtime.*;
 
 import java.util.*;
 
@@ -31,12 +29,12 @@ public class CommandSellHand implements CommandExecutor {
                 player.getInventory().setItemInMainHand(null);
             }
 
-            ArrayList<BTPlayer> btPlayers = FileRW.readFile("btplayers.ser");
+            ArrayList<BTPlayer> btPlayers = FileRW.readFile(BorrowedTime.playersPath);
 
             BTPlayer btPlayer = BTPlayer.getBTPlayerByUUID(player.getUniqueId(), btPlayers);
 
             btPlayer.addSecondsRemaining(total);
-            FileRW.writeFile("btplayers.ser", btPlayers);
+            FileRW.writeFile(BorrowedTime.playersPath, btPlayers);
 
             player.sendTitle(ChatColor.GREEN + "You gained " + total + Values.handlePlural(" second", total) + "!", "", 5, 20, 5);
 
