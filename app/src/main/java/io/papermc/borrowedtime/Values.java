@@ -52,15 +52,20 @@ public class Values {
             ConfigurationSection categorySection = root.getConfigurationSection(category);
             if (categorySection != null && category.equals(section)) {
                 Set<String> items = categorySection.getKeys(false);
+                ItemStack itemStack;
+                ItemMeta meta;
+                List<String> lore;
+                Material mat;
+                mat = Material.BARRIER;
+                itemStack = new ItemStack(mat);
+                meta = itemStack.getItemMeta();
+                meta.setDisplayName(ChatColor.RED + "Back");
+                itemStack.setItemMeta(meta);
+                itemStacks.add(itemStack);
                 for(String item : items) {
                     ConfigurationSection itemSection = categorySection.getConfigurationSection(item);
                     if(itemSection != null) {
                         int unitValue = itemSection.getInt("sell");
-                        ItemStack itemStack;
-                        ItemMeta meta;
-                        List<String> lore;
-                        Material mat;
-
                         mat = Material.getMaterial(item.toUpperCase());
                         itemStack = new ItemStack(mat);
                         meta = itemStack.getItemMeta();
