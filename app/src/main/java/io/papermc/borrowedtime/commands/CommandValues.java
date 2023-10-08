@@ -43,7 +43,7 @@ public class CommandValues implements CommandExecutor {
         meta.setLore(lore);
         meta.setDisplayName(ChatColor.AQUA + "Ores");
         itemStack.setItemMeta(meta);
-        inv.setItem(10, itemStack);
+        inv.setItem(6, itemStack);
 
         itemStack = new ItemStack(Material.WHEAT);
         meta = itemStack.getItemMeta();
@@ -52,7 +52,16 @@ public class CommandValues implements CommandExecutor {
         meta.setLore(lore);
         meta.setDisplayName(ChatColor.GREEN + "Farming");
         itemStack.setItemMeta(meta);
-        inv.setItem(12, itemStack);
+        inv.setItem(20, itemStack);
+
+        itemStack = new ItemStack(Material.ROTTEN_FLESH);
+        meta = itemStack.getItemMeta();
+        lore = new ArrayList<>();
+        lore.add("...");
+        meta.setLore(lore);
+        meta.setDisplayName(ChatColor.GREEN + "Mob Drops");
+        itemStack.setItemMeta(meta);
+        inv.setItem(24, itemStack);
 
         itemStack = new ItemStack(Material.GRASS_BLOCK);
         meta = itemStack.getItemMeta();
@@ -61,7 +70,7 @@ public class CommandValues implements CommandExecutor {
         meta.setLore(lore);
         meta.setDisplayName(ChatColor.GRAY + "Blocks");
         itemStack.setItemMeta(meta);
-        inv.setItem(14, itemStack);
+        inv.setItem(2, itemStack);
 
         itemStack = new ItemStack(Material.ENCHANTED_GOLDEN_APPLE);
         meta = itemStack.getItemMeta();
@@ -70,7 +79,7 @@ public class CommandValues implements CommandExecutor {
         meta.setLore(lore);
         meta.setDisplayName(ChatColor.GOLD + "Valuables");
         itemStack.setItemMeta(meta);
-        inv.setItem(16, itemStack);
+        inv.setItem(13, itemStack);
 
         ItemStack[] contents = inv.getContents();
         for(int i = 0; i < contents.length; i++) {
@@ -100,6 +109,17 @@ public class CommandValues implements CommandExecutor {
     public static void openFarming(Player player) {
         Inventory inv = Bukkit.createInventory(null, 27, "Farming");
         ArrayList<ItemStack> ores = Values.getItemsOfSection("farming");
+        int index = 0;
+        for (ItemStack ore : ores) {
+            inv.setItem(index, ore);
+            index++;
+        }
+        player.openInventory(inv);
+    }
+
+    public static void openMobDrops(Player player) {
+        Inventory inv = Bukkit.createInventory(null, 27, "Mob Drops");
+        ArrayList<ItemStack> ores = Values.getItemsOfSection("mob_drops");
         int index = 0;
         for (ItemStack ore : ores) {
             inv.setItem(index, ore);
@@ -147,6 +167,9 @@ public class CommandValues implements CommandExecutor {
                 else if(mat.equals(Material.WHEAT)) {
                     openFarming(player);
                 }
+                else if(mat.equals(Material.ROTTEN_FLESH)) {
+                    openMobDrops(player);
+                }
                 else if(mat.equals(Material.GRASS_BLOCK)) {
                     openBlocks(player);
                 }
@@ -156,7 +179,7 @@ public class CommandValues implements CommandExecutor {
 
             }
         }
-        else if(title.equals("Ores") || title.equals("Farming") || title.equals("Blocks") || title.equals("Valuables")) {
+        else if(title.equals("Ores") || title.equals("Farming") || title.equals("Mob Drops") || title.equals("Blocks") || title.equals("Valuables")) {
             event.setCancelled(true);
             ItemStack item = event.getCurrentItem();
             if (item != null) {
