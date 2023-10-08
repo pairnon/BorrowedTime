@@ -2,6 +2,7 @@ package io.papermc.borrowedtime.commands;
 
 import io.papermc.borrowedtime.BTPlayer;
 import io.papermc.borrowedtime.FileRW;
+import io.papermc.borrowedtime.Values;
 
 import java.util.*;
 
@@ -40,7 +41,7 @@ public class CommandSellAll implements CommandExecutor {
                 itemAmount += itemToSell.getAmount();
             }
 
-            int total = CommandValues.calcValue(itemType, itemAmount);
+            int total = Values.calcValue(itemType, itemAmount);
 
             if(total != 0) {
                 for ( ItemStack itemToSell : itemsToSell ) {
@@ -55,7 +56,7 @@ public class CommandSellAll implements CommandExecutor {
             btPlayer.addSecondsRemaining(total);
             FileRW.writeFile("btplayers.ser", btPlayers);
 
-            player.sendTitle(ChatColor.GREEN + "You gained " + total + CommandValues.handlePlural(" second", total) + "!", "", 5, 20, 5);
+            player.sendTitle(ChatColor.GREEN + "You gained " + total + Values.handlePlural(" second", total) + "!", "", 5, 20, 5);
 
         }
         

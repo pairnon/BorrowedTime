@@ -2,6 +2,7 @@ package io.papermc.borrowedtime.commands;
 
 import io.papermc.borrowedtime.BTPlayer;
 import io.papermc.borrowedtime.FileRW;
+import io.papermc.borrowedtime.Values;
 
 import java.util.*;
 
@@ -49,7 +50,7 @@ public class CommandValues implements CommandExecutor {
         lore = new ArrayList<>();
         lore.add("...");
         meta.setLore(lore);
-        meta.setDisplayName(ChatColor.GREEN + "Farming / Food");
+        meta.setDisplayName(ChatColor.GREEN + "Farming");
         itemStack.setItemMeta(meta);
         inv.setItem(12, itemStack);
 
@@ -72,7 +73,6 @@ public class CommandValues implements CommandExecutor {
         inv.setItem(16, itemStack);
 
         ItemStack[] contents = inv.getContents();
-
         for(int i = 0; i < contents.length; i++) {
             if(contents[i] == null) {
                 ItemStack filler = new ItemStack(Material.BLACK_STAINED_GLASS_PANE);
@@ -82,56 +82,51 @@ public class CommandValues implements CommandExecutor {
                 contents[i] = filler;
             }
         }
-
         inv.setContents(contents);
-
         player.openInventory(inv);
     }
 
     public static void openOres(Player player) {
         Inventory inv = Bukkit.createInventory(null, 27, "Ores");
-        ItemStack itemStack;
-        ItemMeta meta;
-        List<String> lore;
-        Material mat;
-
-        mat = Material.IRON_INGOT;
-        itemStack = new ItemStack(mat);
-        meta = itemStack.getItemMeta();
-        lore = new ArrayList<>();
-        int value = calcValue(mat, 1);
-        lore.add("Value: " + ChatColor.GREEN + value + handlePlural(" second", value));
-        meta.setLore(lore);
-        itemStack.setItemMeta(meta);
-        inv.setItem(0, itemStack);
-
+        ArrayList<ItemStack> ores = Values.getItems("ores");
+        int index = 0;
+        for (ItemStack ore : ores) {
+            inv.setItem(index, ore);
+            index++;
+        }
         player.openInventory(inv);
-
     }
 
     public static void openFarming(Player player) {
-        Inventory inv = Bukkit.createInventory(null, 27, "Farming / Food");
-        
-        //
-
+        Inventory inv = Bukkit.createInventory(null, 27, "Farming");
+        ArrayList<ItemStack> ores = Values.getItems("farming");
+        int index = 0;
+        for (ItemStack ore : ores) {
+            inv.setItem(index, ore);
+            index++;
+        }
         player.openInventory(inv);
-
     }
 
     public static void openBlocks(Player player) {
         Inventory inv = Bukkit.createInventory(null, 27, "Blocks");
-        
-        //
-
+        ArrayList<ItemStack> ores = Values.getItems("blocks");
+        int index = 0;
+        for (ItemStack ore : ores) {
+            inv.setItem(index, ore);
+            index++;
+        }
         player.openInventory(inv);
-
     }
 
     public static void openValuables(Player player) {
         Inventory inv = Bukkit.createInventory(null, 27, "Valuables");
-        
-        //
-
+        ArrayList<ItemStack> ores = Values.getItems("valuables");
+        int index = 0;
+        for (ItemStack ore : ores) {
+            inv.setItem(index, ore);
+            index++;
+        }
         player.openInventory(inv);
 
     }
@@ -159,36 +154,7 @@ public class CommandValues implements CommandExecutor {
                     openValuables(player);
                 }
 
-                // player.sendMessage(ChatColor.GREEN + "Value: " + calcValue(mat, 1) + " seconds");
             }
-        }
-    }
-
-    public static int calcValue(Material material, int itemAmount) {
-
-        int unitValue = 0;
-        int finalValue = 0;
-
-        if(material.equals(Material.DIRT)) {
-            unitValue = 1;
-        }
-
-        else if(material.equals(Material.DIAMOND)) {
-            unitValue = 500;
-        }
-
-        finalValue = unitValue * itemAmount;
-
-        return finalValue;
-
-    }
-
-    public static String handlePlural(String noun, int amount) {
-        if(amount == 1) {
-            return noun;
-        }
-        else {
-            return noun + "s";
         }
     }
 
