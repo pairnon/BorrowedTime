@@ -66,11 +66,11 @@ public class BorrowedTime extends JavaPlugin implements Listener {
             FileRW.writeFile("btplayers.ser", btPlayers);
 
 
-            player.sendMessage(Component.text("Welcome, " + event.getPlayer().getName() + "!"));
+            player.sendMessage(ChatColor.GOLD + "Welcome, " + event.getPlayer().getName() + "!");
         }
 
         else {
-            player.sendMessage(Component.text("Welcome back, " + event.getPlayer().getName() + "!"));
+            player.sendMessage(ChatColor.GOLD + "Welcome back, " + event.getPlayer().getName() + "!");
         }
 
         runTime(player);
@@ -79,7 +79,7 @@ public class BorrowedTime extends JavaPlugin implements Listener {
     @EventHandler
     public void onPlayerRespawn(PlayerRespawnEvent event) {
         Player player = event.getPlayer();
-        player.sendMessage("You have respawned!");
+        player.sendMessage(ChatColor.GOLD + "You have respawned!");
 
         runTime(player);
     }
@@ -92,6 +92,8 @@ public class BorrowedTime extends JavaPlugin implements Listener {
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
         Player player = event.getEntity();
+        String msg = event.getDeathMessage();
+        event.setDeathMessage(ChatColor.GOLD + "" + msg);
         btPlayers = FileRW.readFile("btplayers.ser");
         BTPlayer btPlayer = BTPlayer.getBTPlayerByUUID(player.getUniqueId(), btPlayers);
         if(btPlayer.getSecondsRemaining() > 4) {
@@ -102,7 +104,7 @@ public class BorrowedTime extends JavaPlugin implements Listener {
             btPlayers.set(index, btPlayer);
         }
         else {
-            event.setDeathMessage(player.getName() + " ran out of time!");
+            event.setDeathMessage(ChatColor.GOLD + "" + player.getName() + " ran out of time!");
             int index = btPlayers.indexOf(btPlayer);
             btPlayer.setSecondsRemaining(startingSeconds);
             btPlayers.set(index, btPlayer);
