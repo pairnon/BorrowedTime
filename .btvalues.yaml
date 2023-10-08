@@ -1,0 +1,25 @@
+# Example item values file that should be in /plugins
+
+ores:
+  diamond:
+    sell: 40
+  iron_ingot:
+    sell: 20
+farming:
+  wheat:
+    sell: 5
+  cactus:
+    sell: 9
+mob_drops:
+  bone:
+    sell: 9
+  leather:
+    sell: 12
+blocks:
+  dirt:
+    sell: 2
+valuables:
+  beacon:
+    sell: 1000
+  enchanted_golden_apple:
+    sell: 300
