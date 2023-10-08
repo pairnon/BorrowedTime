@@ -18,6 +18,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.entity.PlayerDeathEvent;
 
 import io.papermc.borrowedtime.commands.*;
 
@@ -88,9 +89,31 @@ public class BorrowedTime extends JavaPlugin implements Listener {
         CommandValues.handleClickEvent(event);
     }
 
+    @EventHandler
+    public void onPlayerDeath(PlayerDeathEvent event) {
+        Player player = event.getEntity();
+        btPlayers = FileRW.readFile("btplayers.ser");
+        BTPlayer btPlayer = BTPlayer.getBTPlayerByUUID(player.getUniqueId(), btPlayers);
+        if(btPlayer.getSecondsRemaining() <= 0) {
+            event.setDeathMessage(player.getName() + " ran out of time!");
+            int index = btPlayers.indexOf(btPlayer);
+            btPlayer.setSecondsRemaining(startingSeconds);
+            btPlayers.set(index, btPlayer);
+            FileRW.writeFile("btplayers.ser", btPlayers);
+        }
+        else {
+            int currentSeconds = btPlayer.getSecondsRemaining();
+            int newSeconds = currentSeconds / 2;
+            int index = btPlayers.indexOf(btPlayer);
+            btPlayer.setSecondsRemaining(newSeconds);
+            btPlayers.set(index, btPlayer);
+            FileRW.writeFile("btplayers.ser", btPlayers);
+        }
+    }
+
     public void runTime(Player player) {
 
-        BossBar timeRem = Bukkit.createBossBar("x", BarColor.BLUE, BarStyle.SOLID);
+        BossBar timeRem = Bukkit.createBossBar("Time Remaining: ", BarColor.BLUE, BarStyle.SOLID);
         timeRem.addPlayer(player);
 
         new BukkitRunnable() {
