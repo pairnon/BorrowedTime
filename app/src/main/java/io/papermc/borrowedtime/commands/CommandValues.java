@@ -88,7 +88,7 @@ public class CommandValues implements CommandExecutor {
 
     public static void openOres(Player player) {
         Inventory inv = Bukkit.createInventory(null, 27, "Ores");
-        ArrayList<ItemStack> ores = Values.getItems("ores");
+        ArrayList<ItemStack> ores = Values.getItemsOfSection("ores");
         int index = 0;
         for (ItemStack ore : ores) {
             inv.setItem(index, ore);
@@ -99,7 +99,7 @@ public class CommandValues implements CommandExecutor {
 
     public static void openFarming(Player player) {
         Inventory inv = Bukkit.createInventory(null, 27, "Farming");
-        ArrayList<ItemStack> ores = Values.getItems("farming");
+        ArrayList<ItemStack> ores = Values.getItemsOfSection("farming");
         int index = 0;
         for (ItemStack ore : ores) {
             inv.setItem(index, ore);
@@ -110,7 +110,7 @@ public class CommandValues implements CommandExecutor {
 
     public static void openBlocks(Player player) {
         Inventory inv = Bukkit.createInventory(null, 27, "Blocks");
-        ArrayList<ItemStack> ores = Values.getItems("blocks");
+        ArrayList<ItemStack> ores = Values.getItemsOfSection("blocks");
         int index = 0;
         for (ItemStack ore : ores) {
             inv.setItem(index, ore);
@@ -121,7 +121,7 @@ public class CommandValues implements CommandExecutor {
 
     public static void openValuables(Player player) {
         Inventory inv = Bukkit.createInventory(null, 27, "Valuables");
-        ArrayList<ItemStack> ores = Values.getItems("valuables");
+        ArrayList<ItemStack> ores = Values.getItemsOfSection("valuables");
         int index = 0;
         for (ItemStack ore : ores) {
             inv.setItem(index, ore);

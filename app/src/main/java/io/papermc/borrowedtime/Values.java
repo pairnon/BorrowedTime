@@ -38,7 +38,7 @@ public class Values {
         return unitValue;
     }
 
-    public static ArrayList<ItemStack> getItems(String section) {
+    public static ArrayList<ItemStack> getItemsOfSection(String section) {
 
         ArrayList<ItemStack> itemStacks = new ArrayList<ItemStack>();
 
