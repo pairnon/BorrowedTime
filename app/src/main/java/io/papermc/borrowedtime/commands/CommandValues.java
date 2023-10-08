@@ -156,6 +156,16 @@ public class CommandValues implements CommandExecutor {
 
             }
         }
+        else if(title.equals("Ores") || title.equals("Farming") || title.equals("Blocks") || title.equals("Valuables")) {
+            event.setCancelled(true);
+            ItemStack item = event.getCurrentItem();
+            if (item != null) {
+                Material mat = item.getType();
+                if(mat.equals(Material.BARRIER)) {
+                    openValuesDirectory(player);
+                }
+            }
+        }
     }
 
 }
