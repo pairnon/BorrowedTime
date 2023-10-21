@@ -41,7 +41,7 @@ public class BorrowedTime extends JavaPlugin implements Listener {
         }
 
         else {
-            logger.log(Level.WARNING, "btplayers.ser not found! Initializing new BTPlayer databse.");
+            logger.log(Level.WARNING, "btplayers.ser not found! Initializing new BTPlayer database.");
             FileRW.writeFile(playersPath, btPlayers);
             btPlayers = FileRW.readFile(playersPath);
         }
