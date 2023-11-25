@@ -219,7 +219,7 @@ public class BorrowedTime extends JavaPlugin implements Listener {
             pitch = 0.5F;
             player.sendTitle(calcColor(seconds) + title, calcColor(seconds-1) + subtitle, fadeIn, stay, fadeOut);
         }
-        else if ( seconds < 60 ) { 
+        else if ( seconds < 300 ) { 
             sound = Sound.valueOf("BLOCK_NOTE_BLOCK_BELL");
             pitch = 0.5F;
             player.sendTitle(calcColor(seconds) + title, calcColor(seconds-1) + subtitle, fadeIn, stay, fadeOut);
