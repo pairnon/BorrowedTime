@@ -37,7 +37,7 @@ public class Values {
 
         String name = mat.name().toLowerCase();
         double unitValue = 0.0;
-        File configPath = getYaml("plugins/btvalues.yaml");
+        File configPath = getYaml(BorrowedTime.valuesPath);
         YamlConfiguration config = YamlConfiguration.loadConfiguration(configPath);
         ConfigurationSection root = config.getConfigurationSection("");
         Set<String> categories = root.getKeys(false);
@@ -61,7 +61,7 @@ public class Values {
 
         ArrayList<ItemStack> itemStacks = new ArrayList<ItemStack>();
 
-        File configPath = getYaml("plugins/btvalues.yaml");
+        File configPath = getYaml(BorrowedTime.valuesPath);
         YamlConfiguration config = YamlConfiguration.loadConfiguration(configPath);
         ConfigurationSection root = config.getConfigurationSection("");
 

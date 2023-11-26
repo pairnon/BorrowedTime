@@ -24,7 +24,9 @@ import io.papermc.borrowedtime.commands.*;
 
 public class BorrowedTime extends JavaPlugin implements Listener {
     
-    public static final String playersPath = "./plugins/btplayers.ser";
+    public static final String pluginDirPath = "./plugins/BorrowedTime/";
+    public static final String playersPath = "./plugins/BorrowedTime/btplayers.ser";
+    public static final String valuesPath = "./plugins/BorrowedTime/btvalues.yaml";
 
     private final int startingSeconds = 1200;
 
