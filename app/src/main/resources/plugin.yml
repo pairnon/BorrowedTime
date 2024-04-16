@@ -1,6 +1,6 @@
 name: BorrowedTime
 version: 1.0.0
-main: io.papermc.borrowedtime.BorrowedTime
+main: io.papermc.borrowedtime.Main
 description: A plugin where time is of the essence...
 author: pairnon
 website: https://papermc.io
