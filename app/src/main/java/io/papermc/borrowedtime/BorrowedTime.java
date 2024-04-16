@@ -1,27 +1,32 @@
 package io.papermc.borrowedtime;
 
-import net.kyori.adventure.text.Component;
-import org.bukkit.Bukkit;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.player.*;
-import org.bukkit.plugin.java.JavaPlugin;
-
-import java.util.*;
 import java.time.Duration;
-import java.util.logging.*;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.boss.*;
-import org.bukkit.entity.*;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Sound;
-import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.boss.BarColor;
+import org.bukkit.boss.BarStyle;
+import org.bukkit.boss.BossBar;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
+import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
 
-import io.papermc.borrowedtime.commands.*;
+import io.papermc.borrowedtime.commands.CommandSellAll;
+import io.papermc.borrowedtime.commands.CommandSellHand;
+import io.papermc.borrowedtime.commands.CommandValues;
 
+@SuppressWarnings("deprecation")
 public class BorrowedTime extends JavaPlugin implements Listener {
     
     public static final String pluginDirPath = "./plugins/BorrowedTime/";

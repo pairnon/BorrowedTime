@@ -22,6 +22,7 @@ public class FileRW {
         }
     }
 
+    @SuppressWarnings("unchecked")
     public static ArrayList<BTPlayer> readFile(String path) {
         checkDir(BorrowedTime.pluginDirPath);
         ArrayList<BTPlayer> arrList = null;

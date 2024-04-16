@@ -1,18 +1,24 @@
 package io.papermc.borrowedtime.commands;
 
-import io.papermc.borrowedtime.*;
+import java.util.ArrayList;
+import java.util.List;
 
-import java.util.*;
-
-import net.kyori.adventure.text.Component;
-import org.bukkit.*;
-import org.bukkit.command.*;
-import org.bukkit.inventory.*;
-import org.bukkit.entity.*;
-import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.inventory.meta.*;
+import org.bukkit.Material;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.InventoryView;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
+import io.papermc.borrowedtime.Values;
+
+@SuppressWarnings("deprecation")
 public class CommandValues implements CommandExecutor {
 
     @Override
