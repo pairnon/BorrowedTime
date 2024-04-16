@@ -27,7 +27,7 @@ import io.papermc.borrowedtime.commands.CommandSellHand;
 import io.papermc.borrowedtime.commands.CommandValues;
 
 @SuppressWarnings("deprecation")
-public class BorrowedTime extends JavaPlugin implements Listener {
+public class Main extends JavaPlugin implements Listener {
     
     public static final String pluginDirPath = "./plugins/BorrowedTime/";
     public static final String playersPath = "./plugins/BorrowedTime/btplayers.ser";

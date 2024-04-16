@@ -35,7 +35,7 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass.set("io.papermc.borrowedtime.BorrowedTime")
+    mainClass.set("io.papermc.borrowedtime.Main")
 }
 
 tasks.named<Test>("test") {

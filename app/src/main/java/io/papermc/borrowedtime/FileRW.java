@@ -10,7 +10,7 @@ import java.nio.file.FileAlreadyExistsException;
 public class FileRW {
 
     public static void writeFile(String path, ArrayList<BTPlayer> arrList) {
-        checkDir(BorrowedTime.pluginDirPath);
+        checkDir(Main.pluginDirPath);
         try {
             FileOutputStream fileOut = new FileOutputStream(path);
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
@@ -24,7 +24,7 @@ public class FileRW {
 
     @SuppressWarnings("unchecked")
     public static ArrayList<BTPlayer> readFile(String path) {
-        checkDir(BorrowedTime.pluginDirPath);
+        checkDir(Main.pluginDirPath);
         ArrayList<BTPlayer> arrList = null;
         try {
             FileInputStream fileIn = new FileInputStream(path);

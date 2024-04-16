@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import io.papermc.borrowedtime.BTPlayer;
-import io.papermc.borrowedtime.BorrowedTime;
+import io.papermc.borrowedtime.Main;
 import io.papermc.borrowedtime.FileRW;
 import io.papermc.borrowedtime.Values;
 
@@ -35,12 +35,12 @@ public class CommandSellHand implements CommandExecutor {
                 player.getInventory().setItemInMainHand(null);
             }
 
-            ArrayList<BTPlayer> btPlayers = FileRW.readFile(BorrowedTime.playersPath);
+            ArrayList<BTPlayer> btPlayers = FileRW.readFile(Main.playersPath);
 
             BTPlayer btPlayer = BTPlayer.getBTPlayerByUUID(player.getUniqueId(), btPlayers);
 
             btPlayer.addSecondsRemaining(total);
-            FileRW.writeFile(BorrowedTime.playersPath, btPlayers);
+            FileRW.writeFile(Main.playersPath, btPlayers);
 
             player.sendTitle(ChatColor.GREEN + "You gained " + total + Values.handlePlural(" second", total) + "!", "", 5, 20, 5);
 
