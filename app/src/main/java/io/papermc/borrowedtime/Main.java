@@ -43,7 +43,15 @@ public class Main extends JavaPlugin implements Listener {
 
         Logger logger = Bukkit.getLogger();
 
-        if( !(FileRW.readFile(playersPath) == null) ) {
+        setUpBTPlayerDatabase(logger);
+        
+        this.getCommand("sellhand").setExecutor(new CommandSellHand());
+        this.getCommand("sellall").setExecutor(new CommandSellAll());
+        this.getCommand("values").setExecutor(new CommandValues());
+    }
+
+    private void setUpBTPlayerDatabase(Logger logger) {
+        if( playerDatabaseExists() ) {
             btPlayers = FileRW.readFile(playersPath);
         }
 
@@ -52,10 +60,10 @@ public class Main extends JavaPlugin implements Listener {
             FileRW.writeFile(playersPath, btPlayers);
             btPlayers = FileRW.readFile(playersPath);
         }
-        
-        this.getCommand("sellhand").setExecutor(new CommandSellHand());
-        this.getCommand("sellall").setExecutor(new CommandSellAll());
-        this.getCommand("values").setExecutor(new CommandValues());
+    }
+
+    private boolean playerDatabaseExists() {
+        return !(FileRW.readFile(playersPath) == null);
     }
 
     @EventHandler
@@ -65,12 +73,8 @@ public class Main extends JavaPlugin implements Listener {
 
         btPlayers = FileRW.readFile(playersPath);
 
-        if ( !BTPlayer.checkPlayerInBTPlayers(player, btPlayers) ) {
-            BTPlayer newBTPlayer = new BTPlayer(player.getUniqueId(), startingSeconds);
-            btPlayers.add(newBTPlayer);
-            FileRW.writeFile(playersPath, btPlayers);
-
-
+        if ( isNewBTPlayer(player) ) {
+            initializeBTPlayer(player);
             player.sendMessage(ChatColor.GOLD + "Welcome, " + event.getPlayer().getName() + "!");
         }
 
@@ -78,7 +82,17 @@ public class Main extends JavaPlugin implements Listener {
             player.sendMessage(ChatColor.GOLD + "Welcome back, " + event.getPlayer().getName() + "!");
         }
 
-        runTime(player);
+        startBTPlayerTime(player);
+    }
+
+    private void initializeBTPlayer(Player player) {
+        BTPlayer newBTPlayer = new BTPlayer(player.getUniqueId(), startingSeconds);
+        btPlayers.add(newBTPlayer);
+        FileRW.writeFile(playersPath, btPlayers);
+    }
+
+    private boolean isNewBTPlayer(Player player) {
+        return !BTPlayer.checkPlayerInBTPlayers(player, btPlayers);
     }
 
     @EventHandler
@@ -86,7 +100,7 @@ public class Main extends JavaPlugin implements Listener {
         Player player = event.getPlayer();
         player.sendMessage(ChatColor.GOLD + "You have respawned!");
 
-        runTime(player);
+        startBTPlayerTime(player);
     }
 
     @EventHandler
@@ -117,7 +131,7 @@ public class Main extends JavaPlugin implements Listener {
         FileRW.writeFile(playersPath, btPlayers);
     }
 
-    public void runTime(Player player) {
+    public void startBTPlayerTime(Player player) {
 
         BossBar timeRem = Bukkit.createBossBar("Time Remaining: ", BarColor.BLUE, BarStyle.SOLID);
         timeRem.addPlayer(player);
